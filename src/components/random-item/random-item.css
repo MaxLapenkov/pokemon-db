@@ -1,0 +1,22 @@
+.random-item {
+    display: flex;
+    color: white;
+}
+
+.item-image {
+    margin: 25px;
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+}
+.description-title{
+    margin-top: 20px;
+    font-size: 20px;
+}
+.description-list{
+    list-style: none;
+    padding-left: 20px;    
+}
+.description-list li{
+    margin-top: 15px;
+}

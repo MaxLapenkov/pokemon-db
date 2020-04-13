@@ -1,0 +1,31 @@
+.pokemon-details {
+    display: flex;
+    margin-top: 20px;
+    color: white;
+    min-width: 50%;
+}
+
+.pokemon-image {
+    margin: 25px;
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    
+}
+.pokemon-image .description-title{
+    margin-top: 20px;
+    font-size: 20px;
+}
+.pokemon-image .description-list{
+    list-style: none;
+    padding-left: 20px;    
+}
+.pokemon-image .description-list li{
+    margin-top: 15px;
+}
+.select{
+    min-width: 50%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}

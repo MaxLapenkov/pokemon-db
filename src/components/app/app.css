@@ -1,0 +1,12 @@
+.star-db{
+    max-width: 800px;
+    margin: 0 auto;
+}
+.toggle{
+    display: block;
+    margin-top: 20px;
+    border: none;
+    color: #fff;
+    background-color: #EB6864;
+
+}
