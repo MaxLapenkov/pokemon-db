@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import './pokemon-page.css'
 import ItemList from '../item-list/'
-import PokemonDetails from '../pokemon-details/'
+import ItemDetails from '../pokemon-details/'
 import ErrorIndicator from '../error-indicator/'
 import PokeapiService from '../../services/pokeapi-service'
 import ErrorBoundary from '../error-boundary/'
@@ -50,7 +50,7 @@ export default class PokemonPage extends Component {
         )
         const pokemonDetails = (
             <ErrorBoundary>
-                <PokemonDetails pokemonId = {this.state.selectedPokemon}/>
+                <ItemDetails itemId = {this.state.selectedPokemon}/>
             </ErrorBoundary>
         )
         if(!this.state.selectedPokemon) {

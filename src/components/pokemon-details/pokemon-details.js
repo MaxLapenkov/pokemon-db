@@ -5,12 +5,12 @@ import PokeapiService from '../../services/pokeapi-service';
 import Spinner from '../spinner'
 import PokemonView from './pokemon-view'
 import ErrorIndicator from '../error-indicator/'
-export default class PokemonDetails extends Component {
+export default class ItemDetails extends Component {
 
     pokeapiservice = new PokeapiService()
 
     state = {
-        pokemon: null,
+        item: null,
         loading: true,
         error: false
     }
@@ -18,32 +18,32 @@ export default class PokemonDetails extends Component {
     componentDidMount() {
         
         
-        this.updatePokemon();
+        this.updateItem();
     }
     componentDidUpdate(prevProps) {
-        if(this.props.pokemonId !== prevProps.pokemonId) {
-            this.updatePokemon()
+        if(this.props.itemId !== prevProps.itemId) {
+            this.updateItem()
         } 
         
     }
-    onPokemonLoading = () => {
+    onItemLoading = () => {
         this.setState({
             loading: true
         })
     }
-    onItemLoaded = (pokemon) => {   
+    onItemLoaded = (item) => {   
         this.setState({
-            pokemon,
+            item,
             loading: false})
     }
-    updatePokemon() {
-        const {pokemonId} = this.props;
-        if(!pokemonId) {
+    updateItem() {
+        const {itemId} = this.props;
+        if(!itemId) {
             return;
         }
-        this.onPokemonLoading();
+        this.onItemLoading();
         this.pokeapiservice
-            .getPokemon(pokemonId)
+            .getPokemon(itemId)
             .then(this.onItemLoaded)
             .catch(this.onError) 
     }
@@ -54,21 +54,21 @@ export default class PokemonDetails extends Component {
     render() {
         
         
-        const {pokemon, loading, error} = this.state;
+        const {item, loading, error} = this.state;
 
         const hasData = !(loading || error)
 
         const errorMessage = error ? <ErrorIndicator /> : null;
         const spinner = loading ? <Spinner /> : null
-        const content = hasData ? <PokemonView pokemon={pokemon}/> : null
+        const content = hasData ? <PokemonView pokemon={item}/> : null
 
-        if(!this.state.pokemon) {
+        if(!item) {
             return (
                 <Spinner />
             )
         }
         return(
-            <div className="pokemon-details bg-primary d-flex">
+            <div className="item-details bg-primary d-flex">
                 {errorMessage}
                 {spinner}
                 {content}

@@ -1,26 +1,26 @@
-.pokemon-details {
+.item-details {
     display: flex;
     margin-top: 20px;
     color: white;
     min-width: 50%;
 }
 
-.pokemon-image {
+.item-image {
     margin: 25px;
     width: 150px;
     height: 150px;
     border-radius: 10px;
     
 }
-.pokemon-image .description-title{
+.item-image .description-title{
     margin-top: 20px;
     font-size: 20px;
 }
-.pokemon-image .description-list{
+.item-image .description-list{
     list-style: none;
     padding-left: 20px;    
 }
-.pokemon-image .description-list li{
+.item-image .description-list li{
     margin-top: 15px;
 }
 .select{

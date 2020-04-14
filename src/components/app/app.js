@@ -4,8 +4,8 @@ import Header from '../header/'
 import RandomItem from '../random-item/'
 import ErrorIndicator from '../error-indicator/'
 import PokemonPage from '../pokemon-page/'
-import ItemList from '../item-list/'
-import PokemonDetails from '../pokemon-details/'
+// import ItemList from '../item-list/'
+// import PokemonDetails from '../pokemon-details/'
 import PokeapiService from '../../services/pokeapi-service';
 export default class App extends Component {
 
@@ -47,7 +47,7 @@ export default class App extends Component {
                     <button className="toggle" onClick={this.toggleItem}>Toggle random item</button>     
                     <PokemonPage />
 
-                    <div className="row mb2">
+                    {/* <div className="row mb2">
                         <div className="col-md-6">
                             <ItemList 
                             onItemSelected = {this.onPokemonSelected}
@@ -72,7 +72,7 @@ export default class App extends Component {
                          <div className="col-md-6">
                             <PokemonDetails pokemonId = {this.state.selectedPokemon}/>
                         </div>
-                    </div>
+                    </div> */}
                     
                     
                     
