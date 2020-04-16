@@ -41,7 +41,7 @@
       return res.results.map(this._transformLocations)
     }
     getLocation = async (id) => {
-      const loc = this.getResource(`/location/${id}/`)
+      const loc = await this.getResource(`/location/${id}/`)
       return this._transformLocation(loc);
     }
     _extractId = (item) =>  {
@@ -59,23 +59,25 @@
         
     }
     }
-    _transformItems = (item) => {      
+    _transformItems = (item) => {  
+      
+          
       return {
         id: this._extractId(item),
         name: item.name,
+        
     }
     }
-    _transformLocation = (starship) => {      
+    _transformLocation = (location) => {
+      
+            
       return {
-        id: this._extractId(starship),
-        name: starship.name,
-        model: starship.model,
-        manufacturer: starship.manufacturer,
-        costInCredits: starship.costInCredits,
-        length: starship.length,
-        crew: starship.crew,
-        passangers: starship.passangers,
-        cargoCapacity: starship.cargoCapacity
+        id: location.id,
+        name: location.name,
+        area: location.areas[0].name,
+        region: location.region.name
+
+        
     }   
     }
     _transformLocations = (loc) => {      
@@ -84,7 +86,7 @@
         name: loc.name,
     }
     }
-    _transformPokemons = (pokemon) => {      
+    _transformPokemons = (pokemon) => {    
       return {
         id: this._extractId(pokemon),
         name: pokemon.name,

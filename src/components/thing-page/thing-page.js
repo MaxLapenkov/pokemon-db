@@ -1,26 +1,26 @@
 import React, {Component} from 'react'
-import './pokemon-page.css'
+import './thing-page.css'
 import ErrorIndicator from '../error-indicator/'
 import PokeapiService from '../../services/pokeapi-service'
 import ErrorBoundary from '../error-boundary/'
 import Row from '../row/'
 import  {
-    PokemonDetails,
-    PokemonList,
+    ThingDetails,
+    ThingList,
 } from '../poke-components/'
 
 
-export default class PokemonPage extends Component {
+export default class ThingPage extends Component {
 
     pokeapiService = new PokeapiService()
 
     state = {
-        selectedPokemon: null,
+        selectedThing: null,
     }
 
-    onPokemonSelected = (id) => {
+    onThingSelected = (id) => {
         this.setState ({
-            selectedPokemon: id
+            selectedThing: id
         })
     }
 
@@ -33,26 +33,26 @@ export default class PokemonPage extends Component {
         const itemList = (
             <ErrorBoundary>
 
-            <PokemonList  onItemSelected = {this.onPokemonSelected}/>
+            <ThingList  onItemSelected = {this.onThingSelected}/>
             
             </ErrorBoundary>
         )
         
         
 
-        const pokemonDetails = (
+        const thingDetails = (
             <ErrorBoundary>
 
-            <PokemonDetails itemId={this.state.selectedPokemon}/>
+            <ThingDetails itemId={this.state.selectedThing}/>
                 
             </ErrorBoundary>
         )
-        if(!this.state.selectedPokemon) {
-            return <Row left ={itemList} right = {<span>Выберите покемона</span>} />
+        if(!this.state.selectedThing) {
+            return <Row left ={itemList} right = {<span>Выберите предмет</span>} />
         }  
         return (
             
-            <Row left ={itemList} right = {pokemonDetails} />
+            <Row left ={itemList} right = {thingDetails} />
             
         )
     }
