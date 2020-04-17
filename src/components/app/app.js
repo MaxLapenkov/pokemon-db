@@ -4,9 +4,11 @@ import Header from '../header/'
 import RandomItem from '../random-item/'
 import ErrorIndicator from '../error-indicator/'
 import ErrorBoundary from '../error-boundary/'
-import PokemonPage from '../pokemon-page/'
-import ThingPage from '../thing-page'
-import LocationPage from '../location-page/'
+import{
+    PokemonPage,
+    ThingPage,
+    LocationPage
+} from '../pages/'
 import {PokeapiServiceProvider} from '../pokeapi-service-context/'
 import PokeapiService from '../../services/pokeapi-service';
 
@@ -38,7 +40,7 @@ export default class App extends Component {
         }
 
         const {toggle, page} = this.state;
-        const randItem = toggle ? <RandomItem /> : null;
+        const randItem = toggle ? <RandomItem updateInterval={5000}/> : null;
 
         let content = null;
        

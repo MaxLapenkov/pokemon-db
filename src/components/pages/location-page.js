@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import './location-page.css'
+import './pages.css'
 import ErrorIndicator from '../error-indicator/'
 import PokeapiService from '../../services/pokeapi-service'
 import ErrorBoundary from '../error-boundary/'
@@ -48,7 +48,7 @@ export default class LocationPage extends Component {
             </ErrorBoundary>
         )
         if(!this.state.selectedThing) {
-            return <Row left ={itemList} right = {<span>Выберите предмет</span>} />
+            return <Row left ={itemList} right = {<span>Choose location</span>} />
         }  
         return (
             

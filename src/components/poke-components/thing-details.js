@@ -2,16 +2,20 @@
 import React from 'react'
 import ItemDetails, {Record} from '../item-details/';
 import {withPokeapiService} from '../hoc-helpers/'
-const ThingDetails = ({itemId, pokeapiService}) => {
-    const {getItem} = pokeapiService
+const ThingDetails = (props) => {
+    
     return (
-                <ItemDetails 
-                    itemId={itemId} 
-                    getData={getItem}>
+                <ItemDetails {...props}>
                     <Record field="cost" label="Cost" />
                     <Record field="category" label="Category" />  
                 </ItemDetails>
                 )
 };
 
-export default withPokeapiService(ThingDetails)
+const mapMethodsToProps = (pokeapiService) => {
+    return {
+        getData: pokeapiService.getItem
+    }
+}
+
+export default withPokeapiService(mapMethodsToProps)(ThingDetails)

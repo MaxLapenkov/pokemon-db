@@ -60,15 +60,8 @@ export default class ItemDetails extends Component {
     }
 
     render() {
-        
-        
+   
         const {item, loading, error} = this.state;
-
-        // const hasData = !(loading || error)
-
-        // const errorMessage = error ? <ErrorIndicator /> : null;
-        // const spinner = loading ? <Spinner /> : null
-        // const content = hasData ? <PokemonView pokemon={item}/> : null
 
         if(!item || loading) {
             return (
@@ -83,9 +76,6 @@ export default class ItemDetails extends Component {
         const {name, sprite} = item
         return(
             <div className="item-details bg-primary d-flex">
-                {/* {errorMessage}
-                {spinner} */}
-            
             <div className="item-image">
                 <img alt="item" width="150" height ="150" src={sprite}/>
             </div>

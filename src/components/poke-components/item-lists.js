@@ -1,40 +1,45 @@
 import React from 'react'
 import ItemList from '../item-list'
-import {withData} from '../hoc-helpers/'
-import PokeapiService from '../../services/pokeapi-service'
+import {withData, withPokeapiService, compose, withChildFunction} from '../hoc-helpers/'
 
-const pokeapiService = new PokeapiService();
-
-const {
-    getAllPokemons,
-    getAllItems,
-    getAllLocations
-} = pokeapiService
-
-const withChildFunction = (Wrapped, fn) => {
-    return (props) => {
-        return (    
-            <Wrapped {...props}>
-                {fn}
-            </Wrapped>
-        )
-    }
-}
 
 const renderName = ({name}) => <span>{name}</span>;
 
-const PokemonList = withData(
-    withChildFunction(ItemList, renderName),
-     getAllPokemons)
+const mapPokemonMethodsToProps = (pokeapiService) => {
+    return {
+        getData: pokeapiService.getAllPokemons
+    }
+}
+const mapItemMethodsToProps = (pokeapiService) => {
+    return {
+        getData: pokeapiService.getAllItems
+    }
+}
+const mapLocationMethodsToProps = (pokeapiService) => {
+    return {
+        getData: pokeapiService.getAllLocations
+    }
+}
 
-const ThingList = withData(
-    withChildFunction(ItemList, renderName),
-     getAllItems)
 
-const LocationList = withData(
-    withChildFunction(ItemList, renderName),
-     getAllLocations)
 
+const PokemonList = compose(
+    withPokeapiService(mapPokemonMethodsToProps),
+    withData,
+    withChildFunction(renderName)
+)(ItemList);
+
+const ThingList = compose(
+    withPokeapiService(mapItemMethodsToProps),
+    withData,
+    withChildFunction(renderName)
+)(ItemList);
+
+const LocationList = compose(
+    withPokeapiService(mapLocationMethodsToProps),
+    withData,
+    withChildFunction(renderName)
+)(ItemList);
 
 export {
     PokemonList,

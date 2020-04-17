@@ -68,16 +68,13 @@
         
     }
     }
-    _transformLocation = (location) => {
-      
-            
+    _transformLocation = (location) => {      
       return {
         id: location.id,
         name: location.name,
         area: location.areas[0].name,
-        region: location.region.name
-
-        
+        region: location.region.name,
+        sprite: 'https://www.pngrepo.com/png/276269/180/location-pokemon.png'
     }   
     }
     _transformLocations = (loc) => {      

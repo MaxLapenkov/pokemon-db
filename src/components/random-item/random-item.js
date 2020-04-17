@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-
+import PropTypes from 'prop-types'
 import PokeapiService from '../../services/pokeapi-service'
 import Spinner from '../spinner'
 import ItemView from './item-view'
@@ -10,14 +10,21 @@ export default class RandomItem extends Component {
 
     swapiService = new PokeapiService();
 
+    static defaultProps = {
+        updateInterval: 3000
+    }
+    static propTypes = {
+        updateInterval: PropTypes.number
+    }
     state = {
         item: {},
         loading: true,
         error: false
     }
     componentDidMount() {
+        const {updateInterval} = this.props
         this.updateItem();
-        this.interval = setInterval(this.updateItem, 3000)  
+        this.interval = setInterval(this.updateItem, updateInterval)  
     }
     componentWillUnmount() {
         clearInterval(this.interval);
@@ -64,5 +71,8 @@ export default class RandomItem extends Component {
         )
     }
     
+    
 }
+
+
 
